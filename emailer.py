@@ -5,16 +5,18 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from namesday import namesday
+from namesday import namesday, find_name
 
 with open('password.txt', 'r') as file:
     read_password = file.read()
 
-subject = "Today namesday" 
-body = "Hello Miro, \n\nplease find your daily portfolio report attached."
+subject = "Today namesday" + find_name()
+body = "Hello Miro, \n\nplease find below names day report:\n\n" + namesday()
 sender_email = "stockreporter841@gmail.com"
 receiver_email = "kopecky.mir@gmail.com"
 password = read_password
+
+
 
 # Create a multipart message and set headers
 message = MIMEMultipart()
@@ -26,25 +28,7 @@ message["Bcc"] = receiver_email  # Recommended for mass emails
 # Add body to email
 message.attach(MIMEText(body, "plain"))
 
-filename = "Stock_final.html"  # In same directory as script
 
-# Open PDF file in binary mode
-with open(filename, "rb") as attachment:
-    # Add file as application/octet-stream
-    # Email client can usually download this automatically as attachment
-    part = MIMEBase("application", "octet-stream")
-    part.set_payload(attachment.read())
-
-# Encode file in ASCII characters to send by email    
-encoders.encode_base64(part)
-
-# Add header as key/value pair to attachment part
-part.add_header(
-    "Content-Disposition",
-    f"attachment; filename= {filename}")
-
-# Add attachment to message and convert message to string
-message.attach(part)
 text = message.as_string()
 
 # Log in to server using secure context and send email
