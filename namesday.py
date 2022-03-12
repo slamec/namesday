@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 
 from unicodedata import name
 import requests 
