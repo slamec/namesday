@@ -17,10 +17,13 @@ print(namesday())
 
 def find_name():
     
-    find = re.findall('name:([\s\S]*)$', namesday())
+    find = re.findall('name: (.*)', namesday())
 
     find_string = ' '.join(find)
 
     return find_string
 
 print(find_name())
+
+
+

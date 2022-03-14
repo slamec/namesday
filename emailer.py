@@ -10,10 +10,10 @@ from namesday import namesday, find_name
 with open('password.txt', 'r') as file:
     read_password = file.read()
 
-subject = "Today namesday" + find_name()
-body = "Hello Miro, \n\nplease find below names day report:\n\n" + namesday()
+subject = "Today namesday has:" + ' ' + find_name()
+body = "Hello Dorka and Miro, \n\nplease find below names day report:\n\n" + namesday()
 sender_email = "stockreporter841@gmail.com"
-receiver_email = "kopecky.mir@gmail.com"
+receiver_email = "isidora.konstantinovic5@gmail.com";"kopecky.mir@gmail.com"
 password = read_password
 
 
