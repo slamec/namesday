@@ -13,7 +13,7 @@ with open('password.txt', 'r') as file:
 subject = "Today namesday has:" + ' ' + find_name()
 body = "Hello Dorka and Miro, \n\nplease find below names day report:\n\n" + namesday()
 sender_email = "stockreporter841@gmail.com"
-receiver_email = "isidora.konstantinovic5@gmail.com";"kopecky.mir@gmail.com"
+receiver_email = ["isidora.konstantinovic5@gmail.com", "kopecky.mir@gmail.com"]
 password = read_password
 
 
@@ -21,9 +21,9 @@ password = read_password
 # Create a multipart message and set headers
 message = MIMEMultipart()
 message["From"] = sender_email
-message["To"] = receiver_email
+message["To"] = ", ".join(receiver_email) #from list to a string, more email addresses 
 message["Subject"] = subject
-message["Bcc"] = receiver_email  # Recommended for mass emails
+message["Bcc"] = ", ".join(receiver_email)  # Recommended for mass emails
 
 # Add body to email
 message.attach(MIMEText(body, "plain"))
