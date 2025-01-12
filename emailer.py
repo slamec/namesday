@@ -5,13 +5,13 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from namesday import namesday, find_name
+from namesday import find_name
 
 with open('password.txt', 'r') as file:
     read_password = file.read()
 
 subject = "Today namesday has:" + ' ' + find_name()
-body = "Hello Dorka and Miro, \n\nplease find below names day report:\n\n" + namesday()
+body = "Hi Dorka and Miro,\n\ntoday namesday has:" + ' ' + find_name() + '.'
 sender_email = "stockreporter841@gmail.com"
 receiver_email = ["isidora.konstantinovic5@gmail.com", "kopecky.mir@gmail.com"]
 password = read_password
@@ -36,5 +36,3 @@ context = ssl.create_default_context()
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, text)
-
-
